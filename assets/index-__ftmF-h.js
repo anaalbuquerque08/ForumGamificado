@@ -100,17 +100,11 @@ Error generating stack: `+i.message+`
 `,rv=Ft.div`
   position: fixed;
   width: 100vw;
+  top: 0px;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 1000;
   display: ${({open:e})=>e?"block":"none"};
 `,lv=Ft.div`
-  
   position: fixed;
-  top: 0;
-  width: 2500px;
-  height: 64px;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1000;
-  display: ${({open:e})=>e?"block":"none"};
 `;function iv(){const[e,t]=P.useState(!1),n=()=>{t(!e),e?document.body.style.overflowY="auto":document.body.style.overflowY="hidden"};return S.jsxs(S.Fragment,{children:[S.jsx(tv,{open:e,children:S.jsxs(nv,{children:[S.jsxs(lr,{children:[S.jsx("span",{className:"icone",children:S.jsx(X1,{size:24,color:" #379164"})}),S.jsx("a",{children:"Home"})]}),S.jsxs(lr,{children:[S.jsx(b0,{className:"icone",children:S.jsx(H1,{size:23,color:" #379164"})}),S.jsx("a",{children:"Acessar o Blog"})]}),S.jsxs(lr,{children:[S.jsx("span",{className:"icone",children:S.jsx(Q1,{size:21,color:" #379164"})}),S.jsx("a",{children:"Realizar Contato"})]}),S.jsxs(lr,{children:[S.jsx("span",{className:"icone",children:S.jsx(K1,{size:21,color:" #379164"})}),S.jsx("a",{children:"Saiba mais"})]}),S.jsxs(lr,{children:[S.jsx("span",{className:"icone",children:S.jsx(G1,{size:24,color:" #379164"})}),S.jsx("a",{children:"CMS"})]})]})}),S.jsxs(ev,{children:[S.jsx("div",{className:"header-section",children:S.jsx("div",{className:"logoContainer",children:S.jsx("span",{className:"logo ",children:S.jsx(q0,{size:30})})})}),S.jsxs("div",{className:`links ${e?"open":""}`,children:[S.jsx("a",{href:"",target:"_blank",children:"TopicForum"}),S.jsx("a",{href:"",target:"_blank"})]}),S.jsxs("div",{className:"iconesBox",children:[S.jsx("span",{className:"icone",onClick:n,children:S.jsx(Y1,{size:24,color:" #379164"})}),S.jsx(lv,{open:e,onClick:n})]})]}),S.jsx(rv,{open:e,onClick:n})]})}function ov(){return S.jsx("div",{className:"banner",id:"Banner",children:S.jsxs("div",{className:"ContainerBanner",children:[S.jsx("h2",{className:"titleBanner",children:"Fórum"}),S.jsx("p",{className:"subtitleBanner",children:"em desenvolvimento.."})]})})}function uv(){return S.jsx(R1,{children:S.jsxs("div",{className:"App",children:[S.jsx(iv,{}),S.jsx(W1,{}),S.jsx(ov,{})]})})}vo.createRoot(document.getElementById("root")).render(S.jsx(pe.StrictMode,{children:S.jsx(uv,{})}));
