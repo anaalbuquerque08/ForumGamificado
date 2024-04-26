@@ -55,6 +55,7 @@ const ItemDrawer = styled.div`
 const Backdrop = styled.div`
   position: fixed;
   width: 100vw;
+  top: 0px;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 1000;
@@ -62,14 +63,7 @@ const Backdrop = styled.div`
 `;
 
 const BackdropApp = styled.div`
-  
   position: fixed;
-  top: 0;
-  width: 2500px;
-  height: 64px;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1000;
-  display: ${({ open }) => (open ? "block" : "none")};
 `;
 
 function AppBar() {
