@@ -8,6 +8,7 @@ import { RiGroup2Fill } from "react-icons/ri";
 import { MdOutlineMenu } from "react-icons/md";
 import { IoMdHome } from "react-icons/io";
 import styled from "styled-components";
+import { FcTabletAndroid } from "react-icons/fc";
 
 const InclinedIcon = styled.span`
   transform: rotate(45deg);
@@ -41,10 +42,9 @@ const Drawer = styled.div`
 `;
 
 const DrawerContainer = styled.div`
-  color: #757575;
-  font-size: 16px;
+  font-size: 14px;
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-  padding: 8px;
+  padding: 12px;
 `;
 
 const ItemDrawer = styled.div`
@@ -62,9 +62,10 @@ const Backdrop = styled.div`
 `;
 
 const BackdropApp = styled.div`
+  
   position: fixed;
   top: 0;
-  width: 100vw;
+  width: 2500px;
   height: 64px;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 1000;
@@ -89,31 +90,31 @@ function AppBar() {
         <DrawerContainer>
           <ItemDrawer>
             <span className="icone">
-              <IoMdHome size={24} />
+              <IoMdHome size={24} color=" #379164" />
             </span>
             <a>Home</a>
           </ItemDrawer>
           <ItemDrawer>
             <InclinedIcon className="icone">
-              <ImConnection size={23} />
+              <ImConnection size={23} color=" #379164"/>
             </InclinedIcon>
             <a>Acessar o Blog</a>
           </ItemDrawer>
           <ItemDrawer>
             <span className="icone">
-              <FaEnvelope size={21} />
+              <FaEnvelope size={21} color=" #379164"/>
             </span>
             <a>Realizar Contato</a>
           </ItemDrawer>
           <ItemDrawer>
             <span className="icone">
-              <FaSearchPlus size={21} />
+              <FaSearchPlus size={21} color=" #379164"/>
             </span>
             <a>Saiba mais</a>
           </ItemDrawer>
           <ItemDrawer>
             <span className="icone">
-              <RiGroup2Fill size={24} />
+              <RiGroup2Fill size={24} color=" #379164"/>
             </span>
             <a>CMS</a>
           </ItemDrawer>
@@ -123,23 +124,21 @@ function AppBar() {
       <AppBarContainer>
         <div className="header-section">
           <div className="logoContainer">
-            <span className="logo">
+            <span className="logo ">
+            <FcTabletAndroid size={30}/>
             </span>
           </div>
         </div>
         <div className={`links ${drawerOpen ? "open" : ""}`}>
-          <a href="https://github.com/appboilerplate/appboilerplate" target="_blank">
-            ACESSAR O BLOG
+          <a href="" target="_blank">
+            TopicForum
           </a>
-          <a href="https://twitter.com/appboilerplate" target="_blank">
-            REALIZAR CONTATO
+          <a href="" target="_blank">
           </a>
         </div>
 
         <div className="iconesBox">
-          <span className="icone">
-            <FaGithub size={24}  color=" #379164"/>
-          </span>
+         
           <span  className="icone"  onClick={toggleDrawer}>
             <MdOutlineMenu size={24} color=" #379164" />
           </span>

@@ -10,8 +10,8 @@ function App() {
    <AuthProvider>
     <div className="App">
           <AppBar />
-          <Banner />
           <RoutesApp />
+          <Banner />
         </div>
    </AuthProvider>
      

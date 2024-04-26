@@ -1,4 +1,5 @@
 .signup-container {
+  margin-top: 35px;
   width: 100vw;
   height: 100vh;
   background-color: #e4e4e4;
@@ -28,7 +29,7 @@
 }
 
 .login-imagem-up img {
-  max-width: 80%;
+  max-width: 75%;
   height: auto;
 }
 
@@ -86,8 +87,6 @@
 
 @media only screen and (max-width: 1000px) {
 
-
-  
   .signup-label {
     font-size: 24px;
   }
@@ -105,6 +104,7 @@
     
     .signup-container {
       height: 500px;
+      margin-top: 40px;
     }
   
     .signup-right {
@@ -200,6 +200,7 @@
     
     .signup-container {
       height: 800px;
+      margin-top: 18px;
     }
   
     .signup-right {
@@ -225,6 +226,13 @@
       width: 80%;
     }
   
+  }
+
+  
+  @media only screen and (max-width: 430px) {
+    .signup-container {
+      margin-top: 25px;
+    }
   }
  
 
