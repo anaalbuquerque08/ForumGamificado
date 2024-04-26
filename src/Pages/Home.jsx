@@ -15,8 +15,11 @@ function Home() {
       <Button Text="Sair" onClick={() => [signout(), navigate("/")]} >
         Sair
       </Button>
+    
     </div>
   );
 };
 
 export default Home;
+
+
