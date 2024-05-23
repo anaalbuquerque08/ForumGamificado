@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Forms.css";
 
 function Forms() {
-  const [loginForm, setLoginForm] = useState(true); // Estado para alternar entre login e cadastro
+  const [loginForm, setLoginForm] = useState(true);  
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -19,15 +19,12 @@ function Forms() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (loginForm) {
-      // Lógica de login
+    if (loginForm) { 
       console.log("Login realizado com sucesso!");
-    } else {
-      // Verifica se as senhas são iguais
+    } else { 
       if (formData.password !== formData.confirmPassword) {
         setError("As senhas não coincidem");
-      } else {
-        // Lógica de cadastro
+      } else { 
         console.log("Cadastro realizado com sucesso!");
       }
     }

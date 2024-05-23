@@ -1,7 +1,7 @@
 .button {
   background-color: transparent;
   padding: 10px 15px;
-  outline: none; /* Adicionado para remover a borda preta de foco */
+  outline: none; 
   border: solid 2px #379164;
   border-radius: 5px;
   width: 50%;
@@ -20,7 +20,7 @@
   border: solid 2px #379164;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
   color: #fff;
-  outline: none; /* Adicionado para remover a borda de foco */
+  outline: none; 
 }
 
 
@@ -29,7 +29,7 @@
   .button {
     background-color: transparent;
     padding: 10px 15px;
-    outline: none; /* Adicionado para remover a borda preta de foco */
+    outline: none; 
     border: solid 2px #379164;
     border-radius: 5px;
     width: 60%;

@@ -1,18 +1,18 @@
 import React from "react";
 import RoutesApp from "./RoutesApp";
 import { AuthProvider } from "./contexts/AuthContext";
-import AppBar from "./AppBar";
-import Banner from "./Banner";
+import AppBar from "./AppBar"; 
+import ProfileEditor from "./ProfileEditor";
+  
 import "./App.css"; 
 
 function App() {
   return (
    <AuthProvider>
-    <div className="App">
           <AppBar />
           <RoutesApp />
-          <Banner />
-        </div>
+          <ProfileEditor/>
+             
    </AuthProvider>
      
   );
