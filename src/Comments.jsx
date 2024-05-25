@@ -5,7 +5,7 @@ import { GoHeart } from "react-icons/go";
 import { FaRegComment } from "react-icons/fa";
 import { formatDistanceToNow } from "date-fns";
 import { ptBR } from "date-fns/locale";
-import { FaTrash } from "react-icons/fa6";
+import { FaTrash, FaArrowUp } from "react-icons/fa";
 
 function Comments() {
   const [comments, setComments] = useState([
@@ -15,7 +15,7 @@ function Comments() {
       username: "maria123",
       body: "june saying she doesn't like her name being in the front... my girl..... I need to put on make up tomorrow so, maybe I’ll live tomorrow.I’ll meet with View. What do ViewJuners want me to do with View?",
       likes: 9,
-      comments: 0,
+      comments: [],
       timestamp: new Date(),
     },
     {
@@ -24,7 +24,7 @@ function Comments() {
       username: "john_doe",
       body: "Just finished a 10k run! Feeling great!",
       likes: 23,
-      comments: 2,
+      comments: [],
       timestamp: new Date(),
     },
     {
@@ -33,86 +33,18 @@ function Comments() {
       username: "ana_banana",
       body: "Adorei o novo episódio da série, foi incrível!",
       likes: 15,
-      comments: 3,
+      comments: [],
       timestamp: new Date(),
     },
-    {
-      id: 4,
-      name: "Lucas",
-      username: "lucas123",
-      body: "Today was a productive day at work.",
-      likes: 5,
-      comments: 1,
-      timestamp: new Date(),
-    },
-    {
-      id: 5,
-      name: "Carla",
-      username: "carla87",
-      body: "Vou viajar no fim de semana, não vejo a hora!",
-      likes: 12,
-      comments: 0,
-      timestamp: new Date(),
-    },
-    {
-      id: 6,
-      name: "David",
-      username: "david_king",
-      body: "Just read an amazing book about space exploration.",
-      likes: 18,
-      comments: 4,
-      timestamp: new Date(),
-    },
-    {
-      id: 7,
-      name: "Julia",
-      username: "julia_rose",
-      body: "A comida no novo restaurante é deliciosa!",
-      likes: 22,
-      comments: 5,
-      timestamp: new Date(),
-    },
-    {
-      id: 8,
-      name: "Pedro",
-      username: "pedro_lima",
-      body: "Estou treinando para a maratona do próximo mês.",
-      likes: 7,
-      comments: 0,
-      timestamp: new Date(),
-    },
-    {
-      id: 9,
-      name: "Sophie",
-      username: "sophie_smiles",
-      body: "Had a wonderful day at the beach!",
-      likes: 14,
-      comments: 2,
-      timestamp: new Date(),
-    },
-    {
-      id: 10,
-      name: "Roberto",
-      username: "roberto_guitar",
-      body: "Comprei uma guitarra nova, mal posso esperar para tocar!",
-      likes: 20,
-      comments: 3,
-      timestamp: new Date(),
-    },
-    {
-      id: 11,
-      name: "Isabel",
-      username: "isabel_art",
-      body: "Acabei de terminar uma nova pintura.",
-      likes: 25,
-      comments: 6,
-      timestamp: new Date(),
-    },
+    // ... outros comentários
   ]);
-  
+
   const [newComment, setNewComment] = useState("");
+  const [newReply, setNewReply] = useState("");
+  const [replyingTo, setReplyingTo] = useState(null);
   const [likedComments, setLikedComments] = useState([]);
- 
+  const [expandedComments, setExpandedComments] = useState({});
+
   const currentUser = "currentUser";
 
   useEffect(() => {
@@ -149,15 +81,47 @@ function Comments() {
       username: currentUser,
       body: newComment,
       likes: 0,
-      comments: 0,
+      comments: [],
       timestamp: new Date(),
     };
     setComments([newCommentObj, ...comments]);
     setNewComment("");
+    e.target.reset(); // Limpar o formulário
+  };
+
+  const handleNewReply = (e, commentId) => {
+    e.preventDefault();
+    const newReplyObj = {
+      id: Date.now(),
+      name: "User Name",
+      username: currentUser,
+      body: newReply,
+      timestamp: new Date(),
+    };
+    setComments((prevComments) =>
+      prevComments.map((comment) =>
+        comment.id === commentId
+          ? { ...comment, comments: [newReplyObj, ...comment.comments] }
+          : comment
+      )
+    );
+    setNewReply("");
+    setReplyingTo(null);
+    e.target.reset(); // Limpar o formulário de resposta
   };
 
   const handleDelete = (id) => {
     setComments(comments.filter((comment) => comment.id !== id));
+  };
+
+  const toggleExpand = (id) => {
+    setExpandedComments((prev) => ({
+      ...prev,
+      [id]: !prev[id],
+    }));
+    if (replyingTo !== id) { // Apenas atualize replyingTo se não estiver respondendo ao mesmo comentário
+      setReplyingTo(id);
+    }
   };
 
   return (
@@ -191,7 +155,7 @@ function Comments() {
               </div>
               {comment.username === currentUser && (
                 <button onClick={() => handleDelete(comment.id)} className="delete-button">
-                 <FaTrash /> 
+                  <FaTrash /> Excluir
                 </button>
               )}
             </div>
@@ -202,14 +166,62 @@ function Comments() {
                   <GoHeart color={likedComments.includes(comment.id) ? "red" : "#555"} style={{ marginRight: "5px" }} />
                   <span style={{ color: "#555" }}>{comment.likes}</span>
                 </span>
-                <span style={{ display: "flex", alignItems: "center" }}>
+                <span
+                  style={{ display: "flex", alignItems: "center", cursor: "pointer" }}
+                  onClick={() => toggleExpand(comment.id)}
+                >
                   <FaRegComment color="#555" style={{ marginRight: "5px" }} />
-                  <span style={{ color: "#555" }}>{comment.comments}</span>
+                  <span style={{ color: "#555" }}>{comment.comments.length}</span>
                   <p style={{ paddingLeft: "4px" }}>comentários</p>
                 </span>
               </div>
               <p>{formatDistanceToNow(new Date(comment.timestamp), { locale: ptBR, addSuffix: true })}</p>
             </div>
+            {expandedComments[comment.id] && (
+              <>
+                <div className="comment-replies-header">
+                  {replyingTo === comment.id && (
+                    <form onSubmit={(e) => handleNewReply(e, comment.id)} className="reply-form">
+                       <img className="avatar" src={icone} alt="Descrição da imagem" />
+                      <input
+                        type="text"
+                        className="reply-input"
+                        placeholder="Escreva um comentário..."
+                        value={newReply}
+                        onChange={(e) => setNewReply(e.target.value)}
+                        required
+                      />
+                      <button type="submit" className="reply-button">Comentar</button>
+                    </form>
+                  )}
+                  <span
+                    style={{ cursor: "pointer", display: "flex", alignItems: "center" }}
+                    onClick={() => toggleExpand(comment.id)}
+                  >
+                    <FaArrowUp color="#555" />
+                  </span>
+                </div>
+                {comment.comments.length > 0 && (
+                  <div className="replies-list">
+                    {comment.comments.map((reply) => (
+                      <div key={reply.id} className="reply">
+                        <div className="reply-header">
+                          <img className="avatar" src={icone} alt="Descrição da imagem" />
+                          <div className="username-container">
+                            <h4>{reply.name}</h4>
+                            <span className="username">@{reply.username}</span>
+                          </div>
+                        </div>
+                        <p className="reply-body">{reply.body}</p>
+                        <p className="reply-timestamp">
+                          {formatDistanceToNow(new Date(reply.timestamp), { locale: ptBR, addSuffix: true })}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </>
+            )}
           </div>
         ))}
       </div>

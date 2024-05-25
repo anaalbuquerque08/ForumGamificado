@@ -1,4 +1,5 @@
 import React, { useState } from "react"; 
+import AvatarEditor from "react-avatar-editor";
 
 function ProfileEditor() {
   const [image, setImage] = useState(null);

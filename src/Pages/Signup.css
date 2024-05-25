@@ -61,7 +61,7 @@
 }
 
 .signup-label-signin {
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   font-size: 16px;
   color: #777777;
 }
@@ -165,6 +165,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    margin-bottom: 0;
   }
 
   .box-input{
@@ -216,6 +217,7 @@
       align-items: center;
       justify-content: center;
       flex-direction: column;
+      margin-bottom: 10px;
     }
   
     .box-input{
