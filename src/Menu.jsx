@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Menu.css";
 import { useNavigate } from "react-router-dom";
 import useAuth from "./useAuth";
+import { FaTrophy } from "react-icons/fa";
 import avatar from "./Photos/icone.png";
  
 function Menu() {
@@ -23,7 +24,7 @@ function Menu() {
           <h4 className="NameMenu">{user?.nome}</h4>
           <div className="usernameMenu">@{user?.username}</div>
         </div>
-        <div className="Score">Score: {score.toFixed(2)}</div>
+        <div className="Score"><FaTrophy /> Score: {score.toFixed(2)}</div>
 
         <div>
           <span>o link para pagina de edição</span>

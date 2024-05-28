@@ -13,6 +13,8 @@
   .AvatarContainer {
     margin-bottom: 10px;
     border-radius: 50%;
+    box-shadow: 5px 0 5px rgba(0, 0, 0, 0.2);
+
     overflow: hidden;
   }
   
@@ -21,14 +23,28 @@
     height: 150px;
   }
   
+  .UserDetails{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+  }
+
   .Username {
     font-size: 1.2rem;
-    margin-bottom: 5px;
   }
 
   .NameMenu {
-    font-size: 18px;
-    color: #333;
+    width: 100vw;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    font-size: 20px;
+    color: #e7e7e7;
+    background-color:#379164;
+    margin-top: 10px;
+    margin-bottom: 6px;
+    display: flex;
+    justify-content: center;
   }
   
   .Score {

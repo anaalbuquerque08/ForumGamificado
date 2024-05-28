@@ -27,7 +27,7 @@ export const AuthProvider = ({ children }) => {
       if (hasUser[0].email === email && hasUser[0].password === password) {
         const token = Math.random().toString(36).substring(2);
         localStorage.setItem("user_token", JSON.stringify({ email, token }));
-        setUser(hasUser[0]); // Ajustado para definir o usuário completo
+        setUser(hasUser[0]); 
         return;
       } else {
         return "E-mail ou senha incorretos";

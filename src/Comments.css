@@ -293,21 +293,3 @@ justify-content: space-between;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
   outline: none;
 }
-
-
-
-@media (max-width: 768px) {
-  .comments-section {
-    height: auto;
-    padding-bottom: 20px;
-  }
-
-  .comments-list {
-    width: 100%;
-  }
-
-  .comment-post,
-  .comment {
-    width: 100%;
-  }
-}
