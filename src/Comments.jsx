@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./Comments.css";
 import icone from "./Photos/icone.png";
 import { GoHeart } from "react-icons/go";
@@ -6,6 +6,7 @@ import { FaRegComment, FaTrash, FaArrowUp } from "react-icons/fa";
 import { formatDistanceToNow } from "date-fns";
 import { ptBR } from "date-fns/locale";
 import useAuth from "./useAuth";
+import ScoreContext from "./ScoreContext";
 
 function Comments() {
   const { user } = useAuth();
@@ -17,6 +18,7 @@ function Comments() {
   const [replyingTo, setReplyingTo] = useState(null);
   const [likedComments, setLikedComments] = useState([]);
   const [expandedComments, setExpandedComments] = useState({});
+  const { incrementLikes, decrementLikes, incrementPosts } = useContext(ScoreContext);
   const baseUrl = "https://forumgamificado-a367c-default-rtdb.asia-southeast1.firebasedatabase.app/";
 
   useEffect(() => {
@@ -41,6 +43,7 @@ function Comments() {
           comment.id === id ? { ...comment, likes: comment.likes - 1 } : comment
         )
       );
+      decrementLikes(id); 
     } else {
       setLikedComments([...likedComments, id]);
       setComments((prevComments) =>
@@ -48,6 +51,7 @@ function Comments() {
           comment.id === id ? { ...comment, likes: comment.likes + 1 } : comment
         )
       );
+      incrementLikes(id); 
     }
   };
 
@@ -75,6 +79,7 @@ function Comments() {
         const newCommentWithId = { ...newCommentObj, id: data.name };
         setComments([newCommentWithId, ...comments]);
         setNewComment("");
+        incrementPosts(); 
       })
       .catch((error) => console.error("Error posting comment:", error));
   };
