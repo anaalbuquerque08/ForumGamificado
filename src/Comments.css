@@ -1,10 +1,8 @@
- 
 .comments-section {
   background-color: #e4e4e4;
   box-shadow: -5px 0 5px -5px rgba(128, 128, 128, 0.8); 
   padding: 20px;
-  overflow-y: auto;
-  width:100%;
+  overflow-y: auto; 
   height: 100vh;
   box-sizing: border-box;
   display: flex;
@@ -31,12 +29,13 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  width: 750px;
-   
+  width: 100%; /* Ajuste aqui */
+  max-width: 750px; /* Limita a largura máxima */
 }
 
 .comment-post {
-  width: 750px;
+  width: 100%; /* Ajuste aqui */
+  max-width: 750px; /* Limita a largura máxima */
   max-height: 300px;
   padding-top: 50px;
   padding-bottom: 50px;
@@ -80,7 +79,6 @@
 .new-comment-input::placeholder {
   color: #bbb;
 }
-
 
 .comment {
   padding: 10px; 
@@ -146,6 +144,7 @@
   font-size: 18px;
   color: #555;
 }
+
 .delete-button {
   background-color: transparent; 
   color: transparent;  
@@ -162,10 +161,9 @@
 }
 
 .delete-button svg {
-  color:#379164;  
+  color: #379164;  
   font-size: 20px; 
 }
-
 
 .new-comment-button {
   position: absolute;
@@ -177,7 +175,7 @@
   border: solid 2px #379164;
   border-radius: 12px;
   cursor: pointer;
-  background-color:#379164;
+  background-color: #379164;
   outline: none;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
   transition: background-color 0.3s, box-shadow 0.3s;
@@ -192,23 +190,22 @@
   outline: none;
 }
 
-
- /* reply */
-.comment-replies-header{
-display: flex;
-justify-content: space-between;
-border-top:solid 1px #999999;
-padding: 15px;
+/* reply */
+.comment-replies-header {
+  display: flex;
+  justify-content: space-between;
+  border-top: solid 1px #999999;
+  padding: 15px;
 }
 
-
-.reply-form{
-width: 700px;
-display: flex;
-justify-content: space-between;
+.reply-form {
+  width: 100%; /* Ajuste aqui */
+  max-width: 700px; /* Limita a largura máxima */
+  display: flex;
+  justify-content: space-between;
 }
 
-.reply-input{
+.reply-input {
   flex: 1;
   border: none;
   outline: none;
@@ -217,9 +214,7 @@ justify-content: space-between;
   color: #7c7c7c; 
 }
 
-
-
- .reply {
+.reply {
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 20px;
@@ -269,7 +264,7 @@ justify-content: space-between;
   color: #aaa;
 }
 
-.reply-button{
+.reply-button {
   margin-right: 15px;
   font-size: 13px;
   bottom: 10px;
@@ -279,7 +274,7 @@ justify-content: space-between;
   border: solid 2px #379164;
   border-radius: 12px;
   cursor: pointer;
-  background-color:#379164;
+  background-color: #379164;
   outline: none;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
   transition: background-color 0.3s, box-shadow 0.3s;
@@ -292,4 +287,64 @@ justify-content: space-between;
   color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
   outline: none;
+}
+
+/* Media Queries */
+
+/* Menor que 1000px */
+@media (max-width: 1000px) {
+  .comments-list, .comment-post, .reply-form {
+    width: 90%;
+  }
+}
+
+/* Menor que 800px */
+@media (max-width: 800px) {
+  .comments-section {
+   width: 100vw;
+  }
+  
+  .comment-header, .bottom-comments {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .new-comment-button {
+    position: static;
+    margin-top: 10px;
+  }
+  
+  .reply-form {
+    flex-direction: column;
+  }
+  
+  .reply-button {
+    margin-top: 10px;
+    margin-right: 0;
+  }
+}
+
+/* Menor que 600px */
+@media (max-width: 600px) {
+  .comment-header {
+    padding: 10px;
+  }
+  
+  .avatar {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .new-comment-input, .reply-input {
+    font-size: 14px;
+  }
+  
+  .new-comment-button, .reply-button {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+  
+  .comment-body, .reply-body, .reply-timestamp {
+    padding-left: 10px;
+  }
 }

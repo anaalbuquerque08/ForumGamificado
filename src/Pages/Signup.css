@@ -234,6 +234,7 @@
   @media only screen and (max-width: 430px) {
     .signup-container {
       margin-top: 25px;
+      height: 100vh;
     }
   }
  

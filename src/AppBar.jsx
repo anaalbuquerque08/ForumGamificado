@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./AppBar.css";
 import { ImConnection } from "react-icons/im";
-import { FaGithub } from "react-icons/fa";
 import { FaEnvelope } from "react-icons/fa";
 import { FaSearchPlus } from "react-icons/fa";
 import { RiGroup2Fill } from "react-icons/ri";
@@ -66,7 +65,7 @@ const BackdropApp = styled.div`
   position: fixed;
 `;
 
-function AppBar() {
+function AppBar({ onMenuClick, onHomeClick, onSearchClick }) {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   const toggleDrawer = () => {
@@ -82,35 +81,23 @@ function AppBar() {
     <>
       <Drawer open={drawerOpen}>
         <DrawerContainer>
-          <ItemDrawer>
+          <ItemDrawer onClick={onHomeClick}>
             <span className="icone">
               <IoMdHome size={24} color=" #379164" />
             </span>
             <a>Home</a>
           </ItemDrawer>
-          <ItemDrawer>
+          <ItemDrawer onClick={onMenuClick}>
             <InclinedIcon className="icone">
-              <ImConnection size={23} color=" #379164"/>
+              <ImConnection size={23} color=" #379164" />
             </InclinedIcon>
-            <a>Acessar o Blog</a>
+            <a>Pontuação</a>
           </ItemDrawer>
-          <ItemDrawer>
+          <ItemDrawer onClick={onSearchClick}>
             <span className="icone">
-              <FaEnvelope size={21} color=" #379164"/>
+              <FaSearchPlus size={21} color=" #379164" />
             </span>
-            <a>Realizar Contato</a>
-          </ItemDrawer>
-          <ItemDrawer>
-            <span className="icone">
-              <FaSearchPlus size={21} color=" #379164"/>
-            </span>
-            <a>Saiba mais</a>
-          </ItemDrawer>
-          <ItemDrawer>
-            <span className="icone">
-              <RiGroup2Fill size={24} color=" #379164"/>
-            </span>
-            <a>CMS</a>
+            <a>SearchAndAdd</a>
           </ItemDrawer>
         </DrawerContainer>
       </Drawer>
@@ -119,7 +106,7 @@ function AppBar() {
         <div className="header-section">
           <div className="logoContainer">
             <span className="logo ">
-            <FcTabletAndroid size={30}/>
+              <FcTabletAndroid size={30} />
             </span>
           </div>
         </div>
@@ -127,13 +114,11 @@ function AppBar() {
           <a href="" target="_blank">
             TopicForum
           </a>
-          <a href="" target="_blank">
-          </a>
+          <a href="" target="_blank"></a>
         </div>
 
         <div className="iconesBox">
-         
-          <span  className="icone"  onClick={toggleDrawer}>
+          <span className="icone" onClick={toggleDrawer}>
             <MdOutlineMenu size={24} color=" #379164" />
           </span>
           <BackdropApp open={drawerOpen} onClick={toggleDrawer} />
