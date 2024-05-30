@@ -1,7 +1,7 @@
-import React, { useState } from "react"; 
+import React, { useState } from "react";
 import AvatarEditor from "react-avatar-editor";
 
-function ProfileEditor() {
+function ProfileEditor({ onClose }) {
   const [image, setImage] = useState(null);
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
@@ -21,10 +21,10 @@ function ProfileEditor() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Aqui você pode fazer o que quiser com a imagem, nome e username, como enviar para o servidor
     console.log("Nome:", name);
     console.log("Username:", username);
     console.log("Imagem:", image);
+    onClose();
   };
 
   return (
@@ -41,7 +41,7 @@ function ProfileEditor() {
               height={150}
               border={10}
               borderRadius={75}
-              color={[255, 255, 255, 0.6]} // RGBA
+              color={[255, 255, 255, 0.6]} 
               scale={1.2}
             />
           )}
@@ -55,6 +55,7 @@ function ProfileEditor() {
           <input type="text" id="username" value={username} onChange={handleUsernameChange} />
         </div>
         <button type="submit">Salvar</button>
+        <button type="button" onClick={onClose}>Cancelar</button>
       </form>
     </div>
   );

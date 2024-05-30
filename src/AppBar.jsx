@@ -1,13 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./AppBar.css";
-import { ImConnection } from "react-icons/im";
-import { FaEnvelope } from "react-icons/fa";
-import { FaSearchPlus } from "react-icons/fa";
-import { RiGroup2Fill } from "react-icons/ri";
 import { MdOutlineMenu } from "react-icons/md";
 import { IoMdHome } from "react-icons/io";
 import styled from "styled-components";
 import { FcTabletAndroid } from "react-icons/fc";
+import avatar from "./Photos/icone.png";
+import { AuthContext } from "./contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
+import useAuth from "./useAuth";
+import { MdOutlineLogout } from "react-icons/md";
+import { IoMdSearch } from "react-icons/io";
+
+import { FaRegComment, FaTrash, FaArrowUp, FaTrophy } from "react-icons/fa";
 
 const InclinedIcon = styled.span`
   transform: rotate(45deg);
@@ -65,8 +69,11 @@ const BackdropApp = styled.div`
   position: fixed;
 `;
 
-function AppBar({ onMenuClick, onHomeClick, onSearchClick }) {
+function AppBar({ onMenuClick, onHomeClick, onSearchClick, onProfileEditClick }) {
+  const { user } = useContext(AuthContext);
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const navigate = useNavigate();
+  const { signout } = useAuth();
 
   const toggleDrawer = () => {
     setDrawerOpen(!drawerOpen);
@@ -77,9 +84,25 @@ function AppBar({ onMenuClick, onHomeClick, onSearchClick }) {
     }
   };
 
+  const handleSignout = () => {
+    signout();
+    navigate("/");
+  };
+
   return (
     <>
       <Drawer open={drawerOpen}>
+        <ItemDrawer onClick={onHomeClick}>
+          <div className="AvatarContainerApp">
+            <img className="AvatarApp" src={avatar} alt="Avatar" />
+          </div>
+        </ItemDrawer>
+        <ItemDrawer onClick={onHomeClick}>
+          <div className="NameContainer">
+            <h4 className="NameMenuApp">{user?.nome}</h4>
+            <div className="usernameMenuApp">@{user?.username}</div>
+          </div>
+        </ItemDrawer>
         <DrawerContainer>
           <ItemDrawer onClick={onHomeClick}>
             <span className="icone">
@@ -87,17 +110,28 @@ function AppBar({ onMenuClick, onHomeClick, onSearchClick }) {
             </span>
             <a>Home</a>
           </ItemDrawer>
+
+
           <ItemDrawer onClick={onMenuClick}>
-            <InclinedIcon className="icone">
-              <ImConnection size={23} color=" #379164" />
-            </InclinedIcon>
+            <span className="icone">
+              <FaTrophy size={24} color=" #379164" />
+            </span>
             <a>Pontuação</a>
           </ItemDrawer>
+
+
           <ItemDrawer onClick={onSearchClick}>
             <span className="icone">
-              <FaSearchPlus size={21} color=" #379164" />
+              <IoMdSearch size={24} color=" #379164" />
             </span>
             <a>SearchAndAdd</a>
+          </ItemDrawer>
+
+          <ItemDrawer onClick={handleSignout}>
+            <span className="icone">
+              <MdOutlineLogout size={24} color=" #379164" />
+            </span>
+            <a>Sair</a>
           </ItemDrawer>
         </DrawerContainer>
       </Drawer>
