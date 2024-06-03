@@ -26,6 +26,7 @@ function Menu() {
         <h4 className="NameMenu">{user?.nome}</h4>
         <div className="usernameMenu">@{user?.username}</div>
       </div>
+      <div className="box">
       <div className="scoreContainer">
         <ul className="scoreContent">
           <li className="Score">
@@ -37,13 +38,12 @@ function Menu() {
           <li className="Score">
             <FaRegComment /> Posts: {posts}
           </li>
-          <li className="Score">
-            <FaTrophy /> Classificação: 26º lugar
-          </li>
         </ul>
       </div>
+
+      </div>
+     
       <div className="configurar">
-        <span>o link para pagina de edição</span>
         <button className="SignoutButton" onClick={handleSignout}>
           Sair
         </button>

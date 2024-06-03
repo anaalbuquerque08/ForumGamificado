@@ -47,7 +47,7 @@
   }
   
   .icone {
-    margin-right: 25px;
+    margin-right: 30px; 
     display: none;
   }
   
@@ -75,6 +75,9 @@
   }
 
   @media (max-width: 800px) {
+
+
+
     .Container {
       padding: 0px 8px;
     }

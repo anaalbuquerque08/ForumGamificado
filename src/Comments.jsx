@@ -8,6 +8,7 @@ import { ptBR } from "date-fns/locale";
 import useAuth from "./useAuth";
 import ScoreContext from "./ScoreContext";
 
+
 function Comments() {
   const { user } = useAuth();
   const currentUser = user?.username;

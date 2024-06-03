@@ -97,12 +97,10 @@ function AppBar({ onMenuClick, onHomeClick, onSearchClick, onProfileEditClick })
             <img className="AvatarApp" src={avatar} alt="Avatar" />
           </div>
         </ItemDrawer>
-        <ItemDrawer onClick={onHomeClick}>
-          <div className="NameContainer">
+        <div className="NameContainer" onClick={onHomeClick}>
             <h4 className="NameMenuApp">{user?.nome}</h4>
             <div className="usernameMenuApp">@{user?.username}</div>
-          </div>
-        </ItemDrawer>
+        </div>
         <DrawerContainer>
           <ItemDrawer onClick={onHomeClick}>
             <span className="icone">

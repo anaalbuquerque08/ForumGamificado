@@ -3,6 +3,7 @@ import RoutesApp from "./RoutesApp";
 import { AuthProvider } from "./contexts/AuthContext";
 import AppBarOut from "./AppBarOut";
   
+
 import "./App.css"; 
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
           <RoutesApp />
              
    </AuthProvider>
+   
      
   );
 }
