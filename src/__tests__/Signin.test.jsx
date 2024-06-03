@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import Signin from "../Pages/Signin";
 import { BrowserRouter as Router } from 'react-router-dom';
-
+//1 teste no Signin!
 describe('<Signin />', () => {
     it('Deve render o botão de login e funcionar o evento corretamente', () => {
         render(
@@ -18,7 +18,7 @@ describe('<Signin />', () => {
         expect(buttonLogin).toBeEnabled();
         
         fireEvent.click(buttonLogin);
-        
+         
         console.log(buttonLogin);
     });
 });
