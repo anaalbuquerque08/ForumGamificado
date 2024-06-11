@@ -99,7 +99,7 @@ function AppBar({ onMenuClick, onHomeClick, onSearchClick, onProfileEditClick })
         </ItemDrawer>
         <div className="NameContainer" onClick={onHomeClick}>
             <h4 className="NameMenuApp">{user?.nome}</h4>
-            <div className="usernameMenuApp">@{user?.username}</div>
+            <spam className="usernameMenuApp">@{user?.username}</spam>
         </div>
         <DrawerContainer>
           <ItemDrawer onClick={onHomeClick}>
