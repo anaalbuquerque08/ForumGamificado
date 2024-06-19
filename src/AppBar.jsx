@@ -117,14 +117,6 @@ function AppBar({ onMenuClick, onHomeClick, onSearchClick, onProfileEditClick })
             <a>Pontuação</a>
           </ItemDrawer>
 
-
-          <ItemDrawer onClick={onSearchClick}>
-            <span className="icone">
-              <IoMdSearch size={24} color=" #379164" />
-            </span>
-            <a>SearchAndAdd</a>
-          </ItemDrawer>
-
           <ItemDrawer onClick={handleSignout}>
             <span className="icone">
               <MdOutlineLogout size={24} color=" #379164" />
