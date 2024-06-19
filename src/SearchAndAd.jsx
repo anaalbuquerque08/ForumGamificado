@@ -5,10 +5,7 @@ import "./SearchAndAd.css";
 function SearchAndAd() {
   return (
     <div className="SearchAndAd" id="SearchAndAd">
-    <div>
-      <span>
-        Oi!
-      </span>
+    <div> 
     </div>
    </div>
   );
